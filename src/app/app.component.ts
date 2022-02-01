@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'prestamosOnlineV4front-main';
+  usuario = 'agperez';
+  rolUsuario = 'Ejecutivo';
 }

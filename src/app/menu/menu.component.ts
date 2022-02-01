@@ -7,7 +7,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  logo = 'assets/logoo.png';
+  logo = 'assets/imagenes/BANDESAL HORIZONTAL-01.png';
+  usuario = 'agperez';
+  rolUsuario = 'Ejecutivo';
   public isCollapsed = true;
   j: number;
 
@@ -32,6 +34,8 @@ export class MenuComponent implements OnInit {
   op: string = '#collapseExample';
   numero: number;
   ngOnInit(): void {
+    this.usuario = 'agperez';
+    this.rolUsuario = 'Ejecutivo';
   }
   prueba(n: number) {
     this.numero = n;

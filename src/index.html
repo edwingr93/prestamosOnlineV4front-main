@@ -1,278 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>Prestamos Online v4</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <meta charset="utf-8">
+  <title>AlmacenElSalvador</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./assets/icono.png">
+ <!-- font awesome -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+<!-- MDB icon -->
+<link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+<!-- Google Fonts Roboto -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
 
-  <!-- Custom styles -->
-  <style>
-    @media (min-width: 1400px) {
+<!-- Custom styles -->
+<style>
+  @media (min-width: 1400px) {
 
-      main,
-      header,
-      #main-navbar {
-        padding-left: 240px;
-      }
+    main,
+    header,
+    #main-navbar {
+      padding-left: 240px;
     }
+  }
 
 
-    .sidebar {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #303845;
-  overflow-x: hidden;
-  padding-top: 16px;
-  margin-top: 50px;
-  color: #fff;
+  .sidebar {
+height: 100%;
+width: 160px;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: #303845;
+overflow-x: hidden;
+padding-top: 16px;
+margin-top: 50px;
+color: #fff;
 }
 
 .sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
+padding: 6px 8px 6px 16px;
+text-decoration: none;
+font-size: 20px;
+color: #818181;
+display: block;
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+color: #f1f1f1;
 }
 
 .main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
-  margin-top: 50px;
+margin-left: 160px; /* Same as the width of the sidenav */
+padding: 0px 10px;
+margin-top: 50px;
 }
 
 @media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px}
+.sidebar {padding-top: 15px;}
+.sidebar a {font-size: 18px}
 }
 .sidebar li .submenu{ 
-	list-style: none; 
-	margin: 0; 
-	padding: 0; 
-	padding-left: 1rem; 
-	padding-right: 1rem;
+list-style: none; 
+margin: 0; 
+padding: 0; 
+padding-left: 1rem; 
+padding-right: 1rem;
 }
 
 .sidebar .nav-link {
-    font-weight: 500;
-    color: var(--bs-dark);
+  font-weight: 500;
+  color: var(--bs-dark);
 }
 .sidebar .nav-link:hover {
-    color: var(--bs-primary);
+  color: var(--bs-primary);
 }
 
 .flex-column .nav-item a {
-  color: #f1f1f1 !important;
+color: #f1f1f1 !important;
 
 }
 
 .navbar {
-  background-color: #002675  !important;
+background-color: #002675  !important;
 
 }
-  </style>
+</style>
 
-     <!-- Custom scripts -->
-     <script type="text/javascript">
+   <!-- Custom scripts -->
+   <script type="text/javascript">
 
-      function openNav() {
-          document.getElementById("mySidepanel").display = "block";
-          document.getElementById("mySidepanel").style.width = "250px";
-      }
+    function openNav() {
+        document.getElementById("mySidepanel").display = "block";
+        document.getElementById("mySidepanel").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidepanel").style.width = "0";
+    }
+
+    document.addEventListener("DOMContentLoaded", function(){
+document.querySelectorAll('.sidebar .nav-link').forEach(function(element){
   
-      function closeNav() {
-        document.getElementById("mySidepanel").style.width = "0";
+  element.addEventListener('click', function (e) {
+
+    let nextEl = element.nextElementSibling;
+    let parentEl  = element.parentElement;	
+
+      if(nextEl) {
+          e.preventDefault();	
+          let mycollapse = new bootstrap.Collapse(nextEl);
+          
+          if(nextEl.classList.contains('show')){
+            mycollapse.hide();
+          } else {
+              mycollapse.show();
+              // find other submenus with class=show
+              var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
+              // if it exists, then close all of them
+              if(opened_submenu){
+                new bootstrap.Collapse(opened_submenu);
+              }
+          }
       }
-
-      document.addEventListener("DOMContentLoaded", function(){
-  document.querySelectorAll('.sidebar .nav-link').forEach(function(element){
-    
-    element.addEventListener('click', function (e) {
-
-      let nextEl = element.nextElementSibling;
-      let parentEl  = element.parentElement;	
-
-        if(nextEl) {
-            e.preventDefault();	
-            let mycollapse = new bootstrap.Collapse(nextEl);
-            
-            if(nextEl.classList.contains('show')){
-              mycollapse.hide();
-            } else {
-                mycollapse.show();
-                // find other submenus with class=show
-                var opened_submenu = parentEl.parentElement.querySelector('.submenu.show');
-                // if it exists, then close all of them
-                if(opened_submenu){
-                  new bootstrap.Collapse(opened_submenu);
-                }
-            }
-        }
-    }); // addEventListener
-  }) // forEach
+  }); // addEventListener
+}) // forEach
 }); 
 // DOMContentLoaded  end
 
-    </script>
-  <!-- PRISM -->
-  <script type="text/javascript" src="assets/js/new-prism.js"></script>
-  <!-- MDB SNIPPET -->
-  <script type="text/javascript" src="assets/js/mdbsnippet.min.js"></script>
-  <!-- MDB -->
-  <script type="text/javascript" src="assets/js/mdb.min.js"></script>
-   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+  </script>
+<!-- PRISM -->
+<script type="text/javascript" src="assets/js/new-prism.js"></script>
+<!-- MDB SNIPPET -->
+<script type="text/javascript" src="assets/js/mdbsnippet.min.js"></script>
+<!-- MDB -->
+<script type="text/javascript" src="assets/js/mdb.min.js"></script>
+ <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
-  
-  <!-- ======= Icons used for dropdown (you can use your own) ======== -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+
+<!-- ======= Icons used for dropdown (you can use your own) ======== -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
 </head>
-
 <body>
-  <!-- Navbar -->
-  <nav
-  id="main-navbar"
-  class="navbar navbar-expand-lg navbar-light  fixed-top"
->
-  <!-- Container wrapper -->
-  <div class="container-fluid">
-    <!-- Toggler -->
-
-    <img src="assets/imagenes/BANDESAL HORIZONTAL-01.png" height="40">
-
-    <!-- Right links -->
-    <ul class="navbar-nav ml-auto d-flex flex-row">
-    <!-- select form -->
-    <form class="d-none d-md-flex input-group w-auto my-auto">
-      <input
-        autocomplete="off"
-        type="search"
-        class="form-control rounded"
-        placeholder='Ingrese numero solicitud'
-        style="min-width: 25px" size="25"
-      />  
-      <span class="input-group-text border-0"
-        ><i class="fas fa-search"></i>
-      </span>
-      &nbsp&nbsp&nbsp&nbsp&nbsp
-      <label style="color: #f1f1f1;"for="empresa">Seleccione 1 empresa:</label>
-      &nbsp&nbsp&nbsp
-      <select name="empresa" id="empresa">
-        <option value="1">Davivienda</option>
-        <option value="2">Agricola</option>
-        <option value="3">Cuscatlan</option>
-        <option value="4">BAC</option>
-      </select>
-      &nbsp&nbsp&nbsp&nbsp&nbsp
-     <!-- 
-    -->
-      
-    </form>
-
-      <!-- Avatar -->
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <img
-            src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
-            class="rounded-circle"
-            height="22"
-            alt=""
-            loading="lazy"
-          />
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li><a class="dropdown-item" href="#">My profile</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Logout</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <!-- Container wrapper -->
-</nav>
-
-        <!-- ============= COMPONENT ============== -->
-        <nav class="sidebar py-2 mb-4">
-          <ul class="nav flex-column" id="nav_accordion">
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Link name </a>
-            </li>
-            <li class="nav-item has-submenu">
-              <a class="nav-link" href="#"> Submenu links <i class="bi small bi-caret-down-fill"></i> </a>
-              <ul class="submenu collapse">
-                <li><a class="nav-link" href="#">Submenu item 1 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 2 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 3 </a> </li>
-              </ul>
-            </li>
-            <li class="nav-item has-submenu">
-              <a class="nav-link" href="#"> More menus <i class="bi small bi-caret-down-fill"></i> </a>
-              <ul class="submenu collapse">
-                <li><a class="nav-link" href="#">Submenu item 4 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 5 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 6 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 7 </a></li>
-              </ul>
-            </li>
-            <li class="nav-item has-submenu">
-              <a class="nav-link" href="#"> Another submenus <i class="bi small bi-caret-down-fill"></i> </a>
-              <ul class="submenu collapse">
-                <li><a class="nav-link" href="#">Submenu item 8 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 9 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 10 </a></li>
-                  <li><a class="nav-link" href="#">Submenu item 11 </a></li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Demo link </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Menu item </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Something </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"> Other link </a>
-            </li>
-          </ul>
-          </nav>
-          <!-- ============= COMPONENT END// ============== -->	
-  <main  class="main">
-    <h2>Sidebar Dropdown</h2>
-    <p>Click on the dropdown button to open the dropdown menu inside the side navigation.</p>
-    <p>This sidebar is of full height (100%) and always shown.</p>
-    <p>Some random text..</p>
-  </main >
-
- 
+  <app-root></app-root>
 </body>
+</html>
 
+</head>
+<body>
+  <app-menu></app-menu>
+  <br>
+  <app-root></app-root>
+</body>
 </html>

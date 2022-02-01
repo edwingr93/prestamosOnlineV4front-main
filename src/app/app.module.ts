@@ -7,8 +7,10 @@ import { AppComponent } from './app.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MenuComponent } from './menu/menu.component';
 @NgModule({
   declarations: [
+    MenuComponent,
     AppComponent
   ],
   imports: [
