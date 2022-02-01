@@ -39,3 +39,99 @@
     background-color:rgb(173, 166, 166);
     border-radius:7px;
 }
+
+
+@media (min-width: 1400px) {
+
+    main,
+    header,
+    #main-navbar {
+      padding-left: 240px;
+    }
+  }
+
+
+  .sidebar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #303845;
+    overflow-x: hidden;
+    padding-top: 16px;
+    margin-top: 50px;
+    color: #fff;
+  }
+
+  .sidebar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+  }
+
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+
+  .main {
+    margin-left: 160px;
+    /* Same as the width of the sidenav */
+    padding: 0px 10px;
+    margin-top: 50px;
+    text-align: left;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidebar {
+      padding-top: 15px;
+    }
+
+    .sidebar a {
+      font-size: 18px
+    }
+  }
+
+  .sidebar li .submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .sidebar .nav-link {
+    font-weight: 500;
+    color: var(--bs-dark);
+  }
+
+  .sidebar .nav-link:hover {
+    color: var(--bs-primary);
+  }
+
+  .flex-column .nav-item a {
+    color: #f1f1f1 !important;
+
+  }
+
+  .navbar {
+    background-color: #002675 !important;
+
+  }
+
+  .selectempresa{
+    color: #f1f1f1 !important;
+  }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin-left: 160px; /* Same as the width of the sidenav */
+    padding: 0px 0px;
+ }

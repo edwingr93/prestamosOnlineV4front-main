@@ -10,53 +10,10 @@ export class MenuComponent implements OnInit {
   logo = 'assets/imagenes/BANDESAL HORIZONTAL-01.png';
   usuario = 'agperez';
   rolUsuario = 'Ejecutivo';
-  public isCollapsed = true;
-  j: number;
 
-  @Input() v: number;
-  n: number = 0;
-  totalfinal=0;
-
-  constructor(
-
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-  ) {
-
-
-
-
-    
-  }
-
-  dep: number;
-  nombre: string;
-  op: string = '#collapseExample';
-  numero: number;
   ngOnInit(): void {
     this.usuario = 'agperez';
     this.rolUsuario = 'Ejecutivo';
   }
-  prueba(n: number) {
-    this.numero = n;
-  }
-
-
-  ruta(id: number) {
-    this.router.navigate(['/productos', id]);
-  }
-  rutanombre(nombres: string) {
-    this.router.navigate(['/productos', nombres]);
-    this.isCollapsed = true;
-  }
-  ruta2(id: number) {
-    window.location.reload();
-  }
-  menuopciones(i: number) {
-    this.op = '#collapseExample' + i;
-  }
-  submenu() {
-    this.isCollapsed = false;
-  }
-
+  
 }

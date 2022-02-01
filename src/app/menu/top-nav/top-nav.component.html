@@ -1,0 +1,47 @@
+<!-- Navbar -->
+<nav id="main-navbar" class="navbar navbar-expand-lg fixed-top">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggler -->
+
+
+    <img src="assets/imagenes/BANDESAL HORIZONTAL-01.png" height="40">
+    <!-- Right links -->
+    <ul class="navbar-nav ml-auto d-flex flex-row">
+      <!-- select form -->
+      <form class="d-none d-md-flex input-group w-auto my-auto">
+        <input autocomplete="off" type="search" class="form-control rounded" placeholder='Ingrese numero solicitud'
+          style="min-width: 25px" size="25" />
+        <span class="input-group-text border-0"><i class="fas fa-search"></i>
+        </span>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label id="selectempresa" class="selectempresa" for="empresa">Seleccione 1 empresa:</label>
+        &nbsp;&nbsp;&nbsp;
+        <select name="empresa" id="empresa" class="form-select">
+          <option value="1">Davivienda</option>
+          <option value="2">Agricola</option>
+          <option value="3">Cuscatlan</option>
+          <option value="4">BAC</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- Avatar -->
+        <li class="nav-item dropdown" id="avatar">
+          <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+            id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-user-plus" id="usuario"></i>
+
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Angel Perez - Ejecutivo</a></li>
+            <li><a class="dropdown-item" href="#">Mi cuenta</a></li>
+            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Cerrar sesion</a></li>
+          </ul>
+        </li>
+
+      </form>
+
+
+    </ul>
+  </div>
+  <!-- Container wrapper -->
+</nav>
